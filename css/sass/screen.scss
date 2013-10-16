@@ -1,0 +1,216 @@
+@import "compass/reset";
+@import "compass/css3";
+
+// colors
+$silver: #F8F8F8;
+$yellowdark: #FCAD26;
+$blue: #1299E8;
+$darkGray1: #3A3A3A;
+$darkGray2: #757575;
+$green: #3EB941;
+$purple: #725EED;
+
+// dimensions
+$leftColWidth: 200px;
+$headerHeight: 80px;
+
+// fonts
+@include font-face(
+    "Lato",  
+    font-files(
+        "lato-reg-webfont.eot", 
+        "lato-reg-webfont.svg", 
+        "lato-reg-webfont.woff", 
+        "lato-reg-webfont.ttf"
+    )
+);
+@include font-face(
+    "Lato Light", 
+    font-files(
+        "lato-lig-webfont.eot", 
+        "lato-lig-webfont.svg", 
+        "lato-lig-webfont.woff", 
+        "lato-lig-webfont.ttf"
+    )
+);
+
+*,
+*:before,
+*:after {
+    @include box-sizing(border-box);
+}
+
+body {
+    font-family: 'Lato',Arial,Helvetica,sans-serif;
+    margin: 0;
+}
+
+// heading
+.heading {
+    text-align: center;
+    font-family: 'Lato Light';
+}
+.heading1 {
+    @extend .heading;
+    color:$darkGray2;
+    font-size:40px;
+}
+.heading2 {
+    @extend .heading;
+    font-size:24px;
+    line-height: 26px;
+}
+.heading3 {
+    @extend .heading;
+    color:$silver;
+    font-size:20px;
+    line-height: 22px;
+    text-align: left;
+}
+
+// color classes
+.bgDarkGray1 {
+    background-color: $darkGray1;
+}
+
+// layout
+.row, 
+.col { 
+    overflow: hidden; 
+    position: absolute; 
+}
+.row { 
+    left: 0; 
+    right: 0; 
+}
+.col { 
+    top: $headerHeight;
+    bottom: 0; 
+}
+.scroll-x { 
+    overflow-x: auto; 
+}
+.scroll-y { 
+    overflow-y: auto; 
+}
+
+// configuration
+.col {
+    &.left {
+        width: $leftColWidth; 
+    } 
+    &.right { 
+        left: $leftColWidth; 
+        right: 0; 
+    }
+}
+.body.row { 
+    top: 0px; 
+    bottom: 0px; 
+}
+
+.theHeader {
+    height:$headerHeight;
+    background:$silver;
+    > .heading1 {
+        line-height: $headerHeight - 4;
+    }
+}
+
+.theContent {
+    color: #fff;
+    padding: 10px 20px;
+    overflow-y: auto;
+    .heading1 {
+        font-size: 50px;
+        color: $silver;
+    }
+    .heading2 {
+        font-size: 30px;
+        color: $darkGray2;
+    }    
+}
+
+.theMenu {
+    padding:6px;
+    overflow-y:hidden;
+    &:hover {
+        overflow-y:auto!important;
+    }
+}
+
+
+// navigation
+.menuItem {
+    margin-bottom: 6px;
+    > a {
+        color:$blue;
+        text-decoration: none;
+        display: block;
+        width:100%;
+        text-align: center;
+        background-color:#fff;
+        padding:16px 0;
+        font-family: 'Lato Light';
+        border:3px solid transparent;
+        @include transition(all 0.2s ease);
+        &:hover {
+            border:3px solid $blue;
+        }
+    }
+    &.active > a {
+        background-color: $blue;
+        color:#fff;
+    }
+}
+
+
+// friendsLists
+.friendsContainer {
+    clear:both;
+    padding-bottom:20px;
+    overflow:hidden;
+    &.directFriends {
+        margin-top:20px;
+    }
+    &.friendsOfFriends {
+        a {
+            background: $purple;
+        }
+    }
+    &.suggestedFriends {
+        a {
+            background: $yellowdark;
+        }
+    }
+    .noFriends {
+        font-family: 'Lato Light';
+        margin-top:6px;
+        display:block;
+        color: $darkGray2;
+    }
+}
+
+.friendsList {
+    overflow: hidden;
+    margin-top:6px;
+}
+
+.friendsListItem {
+    float:left;
+    margin:0 10px 10px 0;
+    > a {
+        display:block;
+        padding:20px 30px;
+        background:$green;
+        color: white;
+        text-decoration:none;
+        font-family: 'Lato Light';
+        @include transition(all 0.1s ease);
+        &:hover {
+            background: lighten($darkGray1, 5%);
+        }
+    }
+}
+
+

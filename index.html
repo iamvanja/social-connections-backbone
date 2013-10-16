@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Social connections</title>
+    <link rel="stylesheet" href="css/screen.css">
+</head>
+<body>
+    <div class="container">
+        <header class="theHeader">
+            <h1 class="heading1">
+                Social connections
+            </h1>
+        </header>
+
+        <div class="left col bgDarkGray1">
+            <nav class="body row theMenu" id="theMenu">
+                <!-- empty -->
+            </nav>
+        </div>
+
+        <div class="right col bgDarkGray1">
+            <section class="body row theContent" id="theContent">
+                <!-- empty -->
+            </section>
+        </div>
+    </div>
+
+    <script id="personMenuTemplate" type="text/template">
+        <a class="title" href="#person/<%= id %>" >
+            <%= firstName %> <%= surname %>
+        </a>
+    </script>
+
+    <script id="personDetailTemplate" type="text/template">
+        <h1 class="heading1">
+            <%= firstName %> <%= surname %>
+        </h1>
+        <h2 class="heading2">
+            <%= gender %><% if (age) { %>, <% } %>
+            <%= age %>
+        </h2>
+
+        <div class="friendsContainer directFriends">
+        <h3 class="heading3">
+            Direct friends
+        </h3>
+        <% if (directFriends) { %>
+            <ul class="friendsList">
+            <% _.each(directFriends, function(friend){ %>
+                <li class="friendsListItem">
+                    <a href="#person/<%= friend.id %>">
+                        <%= friend.firstName %> <%= friend.surname %>
+                    </a>
+                </li>
+            <% }); %>
+            </ul>
+        <% 
+        }
+        else { %>
+            <span class="noFriends darkGray7">
+                No friends.
+            </span>
+        <% 
+        }
+        %>
+        </div>
+
+        <div class="friendsContainer friendsOfFriends">
+        <h3 class="heading3">
+            Friends of Friends
+        </h3>
+        <% if (friendsOfFriends) { %>
+            <ul class="friendsList">
+            <% _.each(friendsOfFriends, function(friend){ %>
+                <li class="friendsListItem">
+                    <a href="#person/<%= friend.id %>">
+                        <%= friend.firstName %> <%= friend.surname %>
+                    </a>
+                </li>
+            <% }); %>
+            </ul>
+        <% 
+        }
+        else { %>
+            <span class="noFriends">
+                No friends.
+            </span>
+        <% 
+        }
+        %>
+        </div>
+
+        <div class="friendsContainer suggestedFriends">
+        <h3 class="heading3">
+            Suggested Friends
+        </h3>
+        <% if (!_.isEmpty(suggestedFriends)) { %>
+            <ul class="friendsList">
+            <% _.each(suggestedFriends, function(friend){ %>
+                <li class="friendsListItem">
+                    <a href="#person/<%= friend.id %>">
+                        <%= friend.firstName %> <%= friend.surname %>
+                    </a>
+                </li>
+            <% }); %>
+            </ul>
+        <% 
+        }
+        else { %>
+            <span class="noFriends">
+                No friends.
+            </span>
+        <% 
+        }
+        %>
+        </div>
+    </script>
+
+    <script src="js/lib/vendor/jquery.js"></script>
+    <script src="js/lib/vendor/underscore.js"></script>
+    <script src="js/lib/vendor/backbone.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>
