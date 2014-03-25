@@ -11,4 +11,4 @@ are not directly connected)
 Feedback, bugs, questions? [E-mail](mailto:vanja@gavric.org) me, I'll respond quickly!
 
 ## Demo
-- Demo can be found on [link](http://vanja.gavric.org/various/social-connections-backbone/).
+- Demo can be found on [link](http://vanja.gavric.org/playground/social-connections-backbone/).
